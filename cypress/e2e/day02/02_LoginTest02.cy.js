@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-const { includes } = require("cypress/types/lodash")
+
 
 describe('Koala Resolt Hotel',()=>{
 
@@ -44,11 +44,28 @@ cy.get('#navLogon > .nav-link').should('include.text','Log in')
 
 //Toplam Link sayisini bulmak icin
 
-cy.get('li a').should('have.length',23)
+cy.get('li a').should('have.length',29)
+
+//LOCATE ALMA ISLEMLERI
+//find():Beleirli bir html elemaninin secimini 
+cy.get('li').find('a[href="/Rooms/320"]').should('have.text','Twin 2')
+
+//cy.find() seklinde kullanimi yoktur
+//kullanim sekli anvak cy.get().find()
 
 
 
+//within()
 
+
+cy.get('div.categories').within(()=>{
+
+    cy.get('a[href="/Rooms/320"]').click()
+})
+/*
+NOT: Web elementtleri genellikle get() ile bulacagiz.Eger get() ile bulamazsak.find() ile bulacagiz
+onunlada bulamazsak within() kullaniriz.
+*/
 
 
 
